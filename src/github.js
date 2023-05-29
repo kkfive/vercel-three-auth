@@ -65,7 +65,8 @@ module.exports = class extends Base {
     const url = OAUTH_URL + '?' + qs.stringify({
       client_id: GITHUB_ID,
       redirect_uri: redirectUrl,
-      scope: 'read:user,user:email'
+      scope: 'read:user,user:email',
+      type:'github'
     });
     return this.ctx.redirect(url);
   }
