@@ -49,7 +49,6 @@ module.exports = class extends Base {
     }
     const { id, node_id, name, login, email, blog, avatar_url, type } = userInfo;
     return {
-      userInfo,
       id,
       node_id,
       name,
