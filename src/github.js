@@ -28,6 +28,7 @@ module.exports = class extends Base {
     const userInfo = await request.get({
       url: USER_INFO_URL,
       headers: {
+        'User-Agent': 'kkservice',
         'Authorization': 'token ' + access_token
       },
       json: true
@@ -37,6 +38,7 @@ module.exports = class extends Base {
       const emails = await request.get({
         url: USER_EMAILS,
         headers: {
+          'User-Agent': 'kkservice',
           'Authorization': 'token ' + access_token
         },
         json: true
