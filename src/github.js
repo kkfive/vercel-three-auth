@@ -28,7 +28,6 @@ module.exports = class extends Base {
     const userInfo = await request.get({
       url: USER_INFO_URL,
       headers: {
-        'User-Agent': '@waline',
         'Authorization': 'token ' + access_token
       },
       json: true
@@ -38,7 +37,6 @@ module.exports = class extends Base {
       const emails = await request.get({
         url: USER_EMAILS,
         headers: {
-          'User-Agent': '@waline/auth',
           'Authorization': 'token ' + access_token
         },
         json: true
@@ -49,6 +47,7 @@ module.exports = class extends Base {
     }
     
     return {
+      userInfo,
       id: userInfo.login,
       name: userInfo.name || userInfo.login,
       email: userInfo.email,
