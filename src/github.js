@@ -35,6 +35,7 @@ module.exports = class extends Base {
     });
 
     if (!userInfo.email) {
+      /** @type {Array<{email: string, primary: boolean, verified: boolean, visibility: null|string}>} */
       const emails = await request.get({
         url: USER_EMAILS,
         headers: {
@@ -44,7 +45,10 @@ module.exports = class extends Base {
         json: true
       });
       if (emails.length) {
-        userInfo.email = emails[0].email;
+        const email1 = emails.find(email=>email.verified && email.primary &&email.visibility);
+        const email2 = emails.find(email=>email.verified && email.primary);
+        const email3 = emails.find(email=>email.verified);
+        userInfo.email = email1 || email2 || email3;
       }
     }
     const { id, node_id, name, login, email, blog, avatar_url, type } = userInfo;
